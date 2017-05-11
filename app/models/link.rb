@@ -1,6 +1,11 @@
 class Link < ApplicationRecord
   validates :slug, length: { maximum: 4 }
-  validates :given_url, :format => URI::regexp(%w(http https)), allow_blank: true 
+  validates :given_url, :format => URI::regexp(%w(http https)), allow_blank: true, uniqueness: {
+    message: ->(object, data) do 
+      "#{data[:value]} allready enter and it`s shorten URL - http://localhost:3000/#{Link.find_by_given_url(object.given_url).slug}"
+      
+    end
+  }
   after_create :generate_slug
 
   def generate_slug

@@ -5,7 +5,6 @@ class CreateLinks < ActiveRecord::Migration[5.0]
       t.string :slug
       t.integer :clicks
       t.string :title
-      t.references :user_id, foreign_key: true
 
       t.timestamps
     end
