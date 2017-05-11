@@ -94,3 +94,16 @@ form {
   color: #fff;
   text-decoration: none;
 }
+
+title {
+  font-size: 6em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+short_url {
+  font-size: 6em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}

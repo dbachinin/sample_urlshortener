@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
-  <div class="row" >
+<!--   <div class="row" >
     <div class="col-lg-6 col-lg-offset-3">
 
-    <div class="well">
+    <div class="well"> -->
 <p class="title"><%= @link.title %></p>
 <p class='not_msg'><%= p "Short URL already created" if @link.clicks != @link.id %> </p>
 
@@ -11,10 +11,10 @@
   <li><span class="time"><%= time_ago_in_words(@link.created_at) %> ago</span></li>
 </ul>
 <p class="long_url"><%= link_to @link.given_url, @link.given_url %></p>
-</div>
-</div>
+<!-- </div>
+</div> -->
 <%= link_to 'Back', root_path %>
-</div>
+<!-- </div>
 
-</div>
+</div> -->
 
