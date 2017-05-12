@@ -7,7 +7,7 @@
   <% @top_links.each do |link| %>
     <div class="wall col-md-offset-3">
       <p class="title"><%= truncate(link.title, length: 60) %></p>
-      <p class="short_url"><%= link_to link.slug, target: ENV['BASE_URL']+@link.slug %></p>
+      <p class="short_url"><%= link_to link.slug, target: ENV['BASE_URL'],@link.slug %></p>
       
         
         <li><span class="time"><%= time_ago_in_words(link.created_at) %> ago</span></li>
@@ -19,3 +19,4 @@
 </div>
 <p><%= link_to 'New link', '/links/new',class: "btn btn-default" %></p>
 </div>
+
