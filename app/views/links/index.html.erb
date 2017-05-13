@@ -4,23 +4,35 @@
 </div>
 <div class="row">
 
-  <% Link.all.each do |link| %>
+  <%
+    @link.each do |link|
+#    ui = @link2.user_id.to_i
+#    ue = User.find(ui).email
+    if link.user_id == @user.id
+    
+    email = @user.email 
+    title = link.title 
+    display_slug = link.display_slug 
+    created_at = link.created_at 
+    given_url = link.given_url 
+    slug = link.slug 
+   %>
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 link">
-    <% ui = link.user_id.to_i %>
-    <% ue = User.find(ui).email %>
-    <li><span class="url"><%= p ue if User.find(ui).email == current_user.email %></span></li>
-    <p class="title"><%= truncate(link.title, length: 60) if User.find(ui).email == current_user.email %></p>
-    <p class="short_url"><%= link_to link.display_slug if User.find(ui).email == current_user.email %></p>
+    <li><span class="email"><%= email %></span></li> 
+    <p class="short_url"><%= link_to display_slug  %></p>
        <ul class="click_time">
         
-        <p><span class="time"><%= time_ago_in_words(link.created_at); p "ago" if User.find(ui).email == current_user.email %></span></p>
+        <p><span class="time"><%= time_ago_in_words(created_at)  %> ago </span></p>
       </ul>
-      <p class="long_url"><%= link_to truncate(link.given_url, length: 60), link.given_url if User.find(ui).email == current_user.email %></p>
-      <p><%= button_to "Delete", link, method: :delete, data: { confirm: "Are you sure you wish to delete #{link.slug}?" }, class: "btn btn-danger" if User.find(ui).email == current_user.email %> </p>
+      <p class="long_url"><%= link_to truncate(given_url, length: 60), given_url  %></p>
+      <p><%= button_to "Delete", link, method: :delete, data: { confirm: "Are you sure you wish to delete #{link.slug}?" }, class: "btn btn-danger" %> </p>
     </div>
+
+    <% end %>
   <% end %>
 </div>
 </div>
+
 <p><%= link_to 'New link', '/links/new',class: "btn btn-default" %></p>
 </div>
 

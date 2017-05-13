@@ -7,13 +7,19 @@ class LinksController < ApplicationController
   # GET /links.json
   # GET /links/1
   # GET /links/1.json
-    def index
-    @showlinks = Link.all {|@linkss|
-    @ui = linkss.user_id.to_i
-    @ue = User.find(ui).email
-    linkss.email! = linkss.email if User.find(ui).id == current_user.id
-    linkss.title = truncate(link.title, length: 60) if User.find(ui).id == current_user.id
-
+  def index
+    @user = current_user
+    @link = Link.all
+    # @link.each do |@linkss|
+    # ui = @linkss.user_id.to_i
+    # ue = User.find(ui).email
+    # @linkss.email = @linkss.email if User.find(ui) == current_user.id
+    # @linkss.title = @link.title if User.find(ui) == current_user.id
+    # @linkss.display_slug = @linkss.display_slug if User.find(ui) == current_user.id
+    # @linkss.created_at = @linkss.created_at if User.find(ui) == current_user.id
+    # @linkss.given_url = @linkss.given_url if User.find(ui) == current_user.id
+    # @linkss.slug = @linkss.slug if User.find(ui) == current_user.id
+  # end
   end
 
   def show
@@ -97,7 +103,7 @@ class LinksController < ApplicationController
   # end
 
    def destroy
-    @link = current_user.links.build(link_params)
+    @link = Link.find(params[:id])
     if @link.present?
      @link.destroy
      respond_to do |format|
