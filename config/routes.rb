@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :users, except: [:delete]
-
   devise_for :users
+  #resources :users
   get 'persons/profile'
-
+  
+  devise_scope :user do
+    get '/signout', to: 'devise/sessions#destroy', as: :signout
+  end
   resources :links
   
 

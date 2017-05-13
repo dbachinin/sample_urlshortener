@@ -1,6 +1,6 @@
 class LinksController < ApplicationController
   before_filter :authenticate_user!
-
+  before_action :authenticate_user!, :except => [:show, :index]
   before_action :set_link, only: [:show]
 
   # GET /links
