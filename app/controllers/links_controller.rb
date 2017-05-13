@@ -1,6 +1,6 @@
 class LinksController < ApplicationController
   before_filter :authenticate_user!
-  before_action :authenticate_user!, :except => [:show, :index]
+  #before_action :authenticate_user!, :except => [:show, :index]
   before_action :set_link, only: [:show]
 
   # GET /links
@@ -8,8 +8,12 @@ class LinksController < ApplicationController
   # GET /links/1
   # GET /links/1.json
     def index
-    @link = Link.new
-    @top_links = Link.order(clicks: :desc).first(12)
+    @showlinks = Link.all {|@linkss|
+    @ui = linkss.user_id.to_i
+    @ue = User.find(ui).email
+    linkss.email! = linkss.email if User.find(ui).id == current_user.id
+    linkss.title = truncate(link.title, length: 60) if User.find(ui).id == current_user.id
+
   end
 
   def show
@@ -84,13 +88,27 @@ class LinksController < ApplicationController
 
   # DELETE /links/1
   # DELETE /links/1.json
-  def destroy
-    @link.destroy
-    respond_to do |format|
-      format.html { redirect_to links_url, notice: 'Link was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   @link.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to links_url, notice: 'Link was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
+
+   def destroy
+    @link = current_user.links.build(link_params)
+    if @link.present?
+     @link.destroy
+     respond_to do |format|
+       format.html { redirect_to links_url, notice: 'Link was successfully destroyed.' }
+       format.json { head :no_content }
+     end
+     else
+      redirect_to root_path
+     end
+   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
