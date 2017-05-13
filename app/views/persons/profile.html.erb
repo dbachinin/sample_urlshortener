@@ -1,2 +1,39 @@
-<h1>Persons#profile</h1>
-<p>Find me in app/views/persons/profile.html.erb</p>
+<h1>People</h1>
+<div class="well">
+  <%= link_to "New Person", new_user_registration_path, class: "btn btn-primary" %>
+</div>
+
+<% if flash[:notice] %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% end %>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Count of LINKS</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @people.size == 0 %>
+      <tr>
+        <td colspan="6">No people found.</td>
+      </tr>
+    <% else %>
+      <% @people.each do |person| %>
+        <tr>
+          <td><%= person.email %></td>
+          <td><%= person.links.count(:slug) %></td>
+          <td>
+            <%= link_to "Edit", edit_user_registration_path(person), class: "btn btn-default" %>
+          </td>
+          <td>
+            <%= button_to "Delete", cancel_user_registration_path, method: :delete, data: { confirm: "Are you sure you wish to delete #{person.email}?" }, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
