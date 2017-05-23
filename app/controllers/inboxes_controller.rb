@@ -10,10 +10,15 @@ class InboxesController < ApplicationController
   # GET /inboxes/1
   # GET /inboxes/1.json
   def show
+      @inbox = Inbox.find params[:id]
+      @inbox.read = 0
+      @inbox.save
+      @url = @inbox.shortmessage
   end
 
   # GET /inboxes/new
   def new
+    @url = Link.find(params[:url]).display_slug
     @inbox = Inbox.new
   end
 
@@ -25,6 +30,7 @@ class InboxesController < ApplicationController
   # POST /inboxes.json
   def create
     @inbox = Inbox.new(inbox_params)
+    @inbox.sender = current_user.id
 
     respond_to do |format|
       if @inbox.save

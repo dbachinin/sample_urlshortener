@@ -13,22 +13,13 @@
 
   <div class="field">
     <%= f.label :shortmessage %>
-    <%= f.text_area :shortmessage %>
+    <%= f.text_field :shortmessage, {:value => @url} %>
   </div>
 
-  <div class="field">
-    <%= f.label :sender %>
-    <%= f.number_field :sender %>
-  </div>
 
   <div class="field">
     <%= f.label :reseiver %>
     <%= f.number_field :reseiver %>
-  </div>
-
-  <div class="field">
-    <%= f.label :read %>
-    <%= f.check_box :read %>
   </div>
 
   <div class="actions">

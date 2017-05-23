@@ -30,8 +30,8 @@
 
       <p class="long_url"><%= link_to truncate(given_url, length: 50), given_url  %></p>
       <div class = "form">
-      <p><%= button_to "Delete", link, method: :delete, data: { confirm: "Are you sure you wish to delete #{link.slug}?" }, class: "btn btn-danger" %> </p>
-     
+      <%= button_to "Delete", link, method: :delete, data: { confirm: "Are you sure you wish to delete #{link.slug}?" }, class: "btn btn-danger" %>
+      <%= link_to 'Share', new_inbox_path(:url => link.id), class: 'btn btn-mini btn-success' %>
 
       </div>
     </div>
