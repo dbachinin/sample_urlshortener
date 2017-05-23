@@ -23,6 +23,7 @@ class LinksController < ApplicationController
   end
 
   def show
+    @user = current_user
     if params[:slug]
       @link = Link.find_by(slug: params[:slug])
       if redirect_to @link.given_url

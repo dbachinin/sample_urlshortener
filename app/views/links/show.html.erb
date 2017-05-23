@@ -1,20 +1,26 @@
-<p id="notice"><%= notice %></p>
-<!--   <div class="row" >
-    <div class="col-lg-6 col-lg-offset-3">
+<div class="container-fluid">
+<div class="alert alert-success col-xs-6">
+<p class="notice"><%= notice %></p
+<h4 id="notice"><%= @link.title %></h4>
+</div>
 
-    <div class="well"> -->
-<p class="title"><%= @link.title %></p>
-<p class='not_msg'><%= p "Short URL already created" if @link.clicks != @link.id %> </p>
+    <!-- <div class="col-lg-6 col-lg-offset-3"> -->
+</div>
+
+    <div class="col-sm-7 col-sm-6 well"> 
+    <div class="row" >
+
 
 <p class="short_url"><%= link_to @link.display_slug, @link.display_slug %></p>
 <ul class="click_time">
   <li><span class="time"><%= time_ago_in_words(@link.created_at) %> ago</span></li>
 </ul>
 <p class="long_url"><%= link_to @link.given_url, @link.given_url %></p>
-<!-- </div>
-</div> -->
-<%= link_to 'Back', root_path %>
-<!-- </div>
+</div>
+</div>
 
-</div> -->
+
+</div> 
+
+<%= link_to 'Back', root_path, :class => "btn btn-default" %>
 
