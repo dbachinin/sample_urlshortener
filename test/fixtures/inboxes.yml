@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shortmessage: MyText
+  sender: 1
+  reseiver: 1
+  read: false
+
+two:
+  shortmessage: MyText
+  sender: 1
+  reseiver: 1
+  read: false

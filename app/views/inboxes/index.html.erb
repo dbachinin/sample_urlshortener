@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Inboxes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Shortmessage</th>
+      <th>Sender</th>
+      <th>Reseiver</th>
+      <th>Read</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inboxes.each do |inbox| %>
+      <tr>
+        <td><%= inbox.shortmessage %></td>
+        <td><%= inbox.sender %></td>
+        <td><%= inbox.reseiver %></td>
+        <td><%= inbox.read %></td>
+        <td><%= link_to 'Show', inbox %></td>
+        <td><%= link_to 'Edit', edit_inbox_path(inbox) %></td>
+        <td><%= link_to 'Destroy', inbox, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Inbox', new_inbox_path %>

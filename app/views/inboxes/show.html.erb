@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Shortmessage:</strong>
+  <%= @inbox.shortmessage %>
+</p>
+
+<p>
+  <strong>Sender:</strong>
+  <%= @inbox.sender %>
+</p>
+
+<p>
+  <strong>Reseiver:</strong>
+  <%= @inbox.reseiver %>
+</p>
+
+<p>
+  <strong>Read:</strong>
+  <%= @inbox.read %>
+</p>
+
+<%= link_to 'Edit', edit_inbox_path(@inbox) %> |
+<%= link_to 'Back', inboxes_path %>
