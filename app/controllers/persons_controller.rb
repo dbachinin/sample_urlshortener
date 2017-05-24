@@ -1,6 +1,7 @@
 class PersonsController < ApplicationController
   def profile
   	@people = User.all
+  	@user = current_user
 
   end
   private

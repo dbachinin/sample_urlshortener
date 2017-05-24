@@ -17,6 +17,7 @@ count_inbox = inboxes.where(read: false).count
 <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <%= link_to "URL Shortener", root_path, id: "logo" %>
+
         <nav>
       <ul class="nav navbar-nav navbar-right">
       <li><%= link_to "Hello, #{current_user.email}", "#" if current_user %></li>
@@ -47,7 +48,9 @@ count_inbox = inboxes.where(read: false).count
       </ul>
     </nav>
       </div>
+
     </header>
+      <%= render 'layouts/sidebar' %>
 
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
