@@ -1,7 +1,7 @@
 class Link < ApplicationRecord
   belongs_to :user, optional: true
 
-  baselink = 'http://localhost:3000/'
+  baselink = 'https://powerful-sierra-28874.herokuapp.com/'
   validates :slug, length: { maximum: 4 }, uniqueness: {
     message: ->(object, data) do 
       "#{ENV['BASE_URL']}#{data[:value]} allready enter and it`s long URL - #{Link.find_by_slug(object.slug).given_url}"
@@ -35,7 +35,7 @@ class Link < ApplicationRecord
   end
 
   def display_slug
-   "http://localhost:3000/" + self.slug.to_s
+   "https://powerful-sierra-28874.herokuapp.com/" + self.slug.to_s
   end
 
     def perform(link_id)
