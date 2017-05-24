@@ -1,25 +1,29 @@
 class InboxesController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_inbox, only: [:show, :edit, :update, :destroy]
 
   # GET /inboxes
   # GET /inboxes.json
   def index
     @inboxes = Inbox.all
+    @user = current_user
   end
 
   # GET /inboxes/1
   # GET /inboxes/1.json
   def show
+    @user = current_user
+      # @inbox = Inbox.find params[:id]
       @inbox = Inbox.find params[:id]
-      @inbox.read = 0
-      @inbox.save
       @url = @inbox.shortmessage
+      @inbox.read = true
+      @inbox.save
   end
 
   # GET /inboxes/new
   def new
     @url = Link.find(params[:url]).display_slug
-    @inbox = Inbox.new
+    @inbox = current_user.inboxes.build
   end
 
   # GET /inboxes/1/edit
@@ -29,12 +33,12 @@ class InboxesController < ApplicationController
   # POST /inboxes
   # POST /inboxes.json
   def create
-    @inbox = Inbox.new(inbox_params)
+    @inbox = current_user.inboxes.build(inbox_params)
     @inbox.sender = current_user.id
 
     respond_to do |format|
       if @inbox.save
-        format.html { redirect_to @inbox, notice: 'Inbox was successfully created.' }
+        format.html { redirect_to @inbox, notice: 'You url has ben sent.' }
         format.json { render :show, status: :created, location: @inbox }
       else
         format.html { render :new }

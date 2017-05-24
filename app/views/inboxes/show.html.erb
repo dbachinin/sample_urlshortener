@@ -1,24 +1,22 @@
 <p id="notice"><%= notice %></p>
 
+<div class="col-sm-offset-4 container-fluid ">
+
+<div class="col-sm-7 col-sm-6 well"> 
 <p>
   <strong>Shortmessage:</strong>
-  <%= @inbox.shortmessage %>
+  
+<p class="short_url"><%= link_to @inbox.shortmessage, @inbox.shortmessage %>
 </p>
 
-<p>
-  <strong>Sender:</strong>
-  <%= @inbox.sender %>
-</p>
 
 <p>
   <strong>Reseiver:</strong>
-  <%= @inbox.reseiver %>
+  <%= User.find(@inbox.reseiver).email %>
 </p>
+</div>
+</div>
 
-<p>
-  <strong>Read:</strong>
-  <%= @inbox.read %>
-</p>
 
 <%= link_to 'Edit', edit_inbox_path(@inbox) %> |
 <%= link_to 'Back', inboxes_path %>

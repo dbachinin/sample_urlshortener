@@ -5,24 +5,31 @@
 
       <ul>
       <% inbox.errors.full_messages.each do |message| %>
+
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
-
+<div class="col-lg-offset-4 form-group">
   <div class="field">
     <%= f.label :shortmessage %>
     <%= f.text_field :shortmessage, {:value => @url} %>
   </div>
 
+   <div class="controls">
+    <%= f.label :recipients %>
 
-  <div class="field">
-    <%= f.label :reseiver %>
-    <%= f.number_field :reseiver %>
+    <%= f.select(:reseiver, User.all.collect {|p| [ p.email, p.id ] })%>
+   </div>
+   </div>
+
+
+
+
+
+  <div class="actions col-xs-12 col-sm-offset-5">
+    <%= f.submit "Share", class: "btn btn-primary"  %>
   </div>
-
-  <div class="actions">
-    <%= f.submit %>
   </div>
 <% end %>

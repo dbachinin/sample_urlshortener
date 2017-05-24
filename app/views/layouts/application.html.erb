@@ -12,15 +12,18 @@
 <%
 inboxes = Inbox.all.where(reseiver: current_user)
 count_inbox ||=0
-count_inbox = inboxes.where(read: nil).count 
+count_inbox = inboxes.where(read: false).count 
 %>
 <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-        <%= link_to "URL Shortener", '#', id: "logo" %>
+        <%= link_to "URL Shortener", root_path, id: "logo" %>
         <nav>
       <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to "Hello, #{current_user.email}", "#" if current_user %></li>
+
+      <li class="divider"></li>
         <li><%= link_to "Home", root_path %></li>
-                   <li class="divider"></li>
+                   
            <li><%= link_to "Inbox \(#{count_inbox}\)", inboxes_path %></li>
                 <% if logged_in? %>
 
