@@ -41,8 +41,6 @@ class InboxesController < ApplicationController
       if @inbox.save
         format.html { redirect_to @inbox, notice: 'You url has ben sent.' }
         format.json { render :show, status: :created, location: @inbox }
-        @inbox.read = false
-        @inbox.save
       else
         format.html { render :new }
         format.json { render json: @inbox.errors, status: :unprocessable_entity }

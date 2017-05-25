@@ -11,7 +11,7 @@
 <body>
 <%
 inboxes = Inbox.all.where(reseiver: current_user)
-# count_inbox ||=false
+count_inbox ||= nil
 count_inbox = inboxes.where(read: nil).count 
 %>
 <header class="navbar navbar-fixed-top navbar-inverse">

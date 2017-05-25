@@ -19,7 +19,11 @@
       sender = inbox.sender
    %>
       <tr>
-        <td><%= inbox.shortmessage %></td>
+        <% if inbox.read != nil %>
+         <td><%= " "+inbox.shortmessage %></td>
+         <% else %>
+         <td><div class="glyphicon glyphicon-envelope"><%= " "+inbox.shortmessage %></div></td>
+          <% end %>
         <td><%= User.find(inbox.sender).email %></td>
         <td><%= link_to 'Show', inbox, class: "btn btn-default" %></td>
         <td><%= link_to 'Destroy', inbox, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
