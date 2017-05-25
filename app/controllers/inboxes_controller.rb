@@ -12,11 +12,11 @@ class InboxesController < ApplicationController
   # GET /inboxes/1
   # GET /inboxes/1.json
   def show
-    @user = current_user
+    @user = current_user.id
       # @inbox = Inbox.find params[:id]
       @inbox = Inbox.find params[:id]
       @url = @inbox.shortmessage
-      @inbox.read = true
+      @inbox.read = true if @inbox.sender != @user
       @inbox.save
   end
 
@@ -24,6 +24,7 @@ class InboxesController < ApplicationController
   def new
     @url = Link.find(params[:url]).display_slug
     @inbox = current_user.inboxes.build
+    Link.all.each {|i| i.destroy if Time.now.to_i - i.created_at.to_i >= 1296000 }
   end
 
   # GET /inboxes/1/edit
@@ -40,6 +41,8 @@ class InboxesController < ApplicationController
       if @inbox.save
         format.html { redirect_to @inbox, notice: 'You url has ben sent.' }
         format.json { render :show, status: :created, location: @inbox }
+        @inbox.read = false
+        @inbox.save
       else
         format.html { render :new }
         format.json { render json: @inbox.errors, status: :unprocessable_entity }
