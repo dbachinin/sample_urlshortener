@@ -1,10 +1,16 @@
-<p id="notice"><%= notice %></p>
 
-<div class="col-sm-offset-4 container-fluid ">
 
-<div class="col-sm-7 col-sm-6 well"> 
+    <div class="container">    
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+            <div class="panel panel-info" >
+                <div class="panel-heading">
+                  <div class="panel-title">My Links</div>
+                  <p id="notice"><%= notice %></p>
+
+</div>
+</div>
 <p>
-  <strong>Shortmessage:</strong>
+  <strong>You URL</strong>
   
 <p class="short_url"><%= link_to @inbox.shortmessage, @inbox.shortmessage %>
 </p>

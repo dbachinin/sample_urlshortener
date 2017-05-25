@@ -8,7 +8,7 @@ class Link < ApplicationRecord
       
     end
   }
-  validates :given_url, :format => URI::regexp(%w(http https)), allow_blank: true, uniqueness: {
+  validates :given_url, :format => URI::regexp(%w(http https)), allow_blank: false, uniqueness: {
     message: ->(object, data) do 
       "#{data[:value]} allready enter and it`s shorten URL - #{ENV['BASE_URL']}#{Link.find_by_given_url(object.given_url).display_slug}"
       
