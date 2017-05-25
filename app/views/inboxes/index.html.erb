@@ -25,9 +25,9 @@
    %>
       <tr>
         <% if inbox.read != nil %>
-         <td><%= " "+inbox.shortmessage %></td>
+         <td><%= link_to inbox.shortmessage, inbox.shortmessage, :target => '_blank' %></td>
          <% else %>
-         <td><div class="glyphicon glyphicon-envelope"><%= " "+inbox.shortmessage %></div></td>
+         <td><div class="glyphicon glyphicon-envelope"><%= link_to inbox.shortmessage, inbox.shortmessage, :target => '_blank' %></div></td>
           <% end %>
         <td><%= User.find(inbox.sender).email %></td>
         <td><%= link_to 'Show', inbox, class: "btn btn-default" %></td>

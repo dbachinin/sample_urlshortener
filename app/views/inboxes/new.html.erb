@@ -1,6 +1,16 @@
-<div class="col-sm-push-1">
+    <div class="container">    
+    <p><%= link_to 'New link', '/links/new',class: "btn btn-primary" %></p>
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+            <div class="panel panel-info" >
+                <div class="panel-heading">
+
+                  <div class="panel-title">My Links</div>
+
+</div>
+</div>
 <h1>Share Short Link</h1>
 </div>
 <%= render 'form', inbox: @inbox %>
-
+  <div class="actions col-xs-12 col-sm-offset-5">
 <%= link_to 'Back', root_path, class: "btn btn-default" %>
+</div>

@@ -9,7 +9,7 @@
 
 
 
-<p class="short_url"><%= link_to @link.display_slug, @link.display_slug %></p>
+<p class="short_url"><%= link_to @link.display_slug, @link.display_slug, :target => '_blank' %></p>
 <ul class="click_time">
   <li><span class="time"><%= time_ago_in_words(@link.created_at) %> ago</span></li>
 </ul>
@@ -19,6 +19,6 @@
 
 
 </div> 
-
+<div class="actions col-xs-12 col-sm-offset-4">
 <%= link_to 'Back', root_path, :class => "btn btn-default" %>
-
+</div>

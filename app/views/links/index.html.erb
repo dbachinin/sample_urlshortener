@@ -39,12 +39,12 @@
     <p class="short_url"><%= link_to @display_slug, @display_slug  %></p>
 
       <p class="long_url"><%= link_to truncate(given_url, length: 50), given_url  %></p>
-      <div class = class="col-xs-4">
-      <li style= "height:45px;"><%= button_to "Delete", link, method: :delete, data: { confirm: "Are you sure you wish to delete #{link.slug}?" }, class: "btn btn-danger" %></li>
+      
+      <%= button_to "Delete", link, method: :delete, data: { confirm: "Are you sure you wish to delete #{link.slug}?" }, class: "btn btn-danger" %><br />
 
-      <li ><span><%= link_to 'Share', new_inbox_path(:url => link.id), class: 'btn btn-default' %></span></li>
+      <%= link_to 'Share', new_inbox_path(:url => link.id), class: 'btn btn-default' %><br />
 
-      </div>
+    
     </div>
     </div>
 
