@@ -7,7 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:vkontakte]
 
-         attr_accessor :login
 
 
    def self.find_for_database_authentication(warden_conditions)
@@ -19,13 +18,7 @@ class User < ApplicationRecord
       end
     end
 
-    validate :validate_username
 
-    def validate_username
-      if User.where(email: username).exists?
-        errors.add(:username, :invalid)
-      end
-    end
 
     def self.from_omniauth(auth)
       if User.where(email: auth.info.email).exists?
@@ -41,19 +34,19 @@ class User < ApplicationRecord
           user.email = auth.info.email
           user.password = Devise.friendly_token[0,20]
           user.name = auth.info.name  # assuming the user model has a name
-          user.image = auth.info.image # assuming the user model has an image
+         
         end
       end
   end
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+      if data = session["devise.vk_data"] && session["devise.vk_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
       end
     end
   end
-         
+
 
 
 end

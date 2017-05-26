@@ -28,7 +28,11 @@
          <% else %>
          <td><div class="glyphicon glyphicon-envelope"><%= link_to inbox.shortmessage, inbox.shortmessage, :target => '_blank' %></div></td>
           <% end %>
+          <% if User.find(inbox.sender).email %>
         <td><%= User.find(inbox.sender).email %></td>
+        <% else %>
+        <td><%= User.find(inbox.sender).name %></td>
+        <% end %>
         <td><%= link_to 'Show', inbox, class: "btn btn-default" %></td>
         <td><%= link_to 'Destroy', inbox, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
       </tr>

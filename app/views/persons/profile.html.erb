@@ -27,7 +27,12 @@
     <% else %>
       <% @people.each do |person| %>
         <tr>
-          <td><%= person.email %></td>
+        <% if person.email %>
+        <td><%= person.email %></td>
+        <% else %>
+        <td><%= person.name %></td>
+        <% end %>
+
           <td><%= person.links.count(:slug) %></td>
 
         </tr>
