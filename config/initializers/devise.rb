@@ -275,4 +275,5 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   #config.authentication_keys = { email: true, role_id: false }
+  config.omniauth :vkontakte, 'APP_ID', 'APP_SECRET', callback_url: "https://oauth.vk.com/authorize"
 end
