@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :inboxes
   #devise_for :users
   #resources :users
-  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+  devise_for :users, :controllers => { omniauth_callbacks: 'authentication' }
 
   get 'persons/profile'
   
