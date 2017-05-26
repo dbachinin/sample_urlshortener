@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  #get 'omniauth_callbacks/vkontakte'
+
   resources :inboxes
-  devise_for :users
+  #devise_for :users
   #resources :users
+  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+
   get 'persons/profile'
   
   devise_scope :user do

@@ -4,7 +4,8 @@ class User < ApplicationRecord
   has_many :links, dependent: :destroy
   has_many :inboxes, dependent: :destroy
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, omniauth_providers: [:vkontakte]
 
 
 end
