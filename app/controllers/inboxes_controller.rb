@@ -16,7 +16,7 @@ class InboxesController < ApplicationController
       # @inbox = Inbox.find params[:id]
       @inbox = Inbox.find params[:id]
       @url = @inbox.shortmessage
-      @inbox.read = true #if @inbox.sender != @user
+      @inbox.read = true if @inbox.sender != @user
       @inbox.save
   end
 

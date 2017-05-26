@@ -5,7 +5,9 @@
                   <div class="panel-title">Sign In</div>
                     <div style="float:right; font-size: 80%; position: relative; top:-10px"><a><%= link_to "Forgot your password?", new_password_path(resource_name) %><br /></a></div>
     </div>     
-
+<% if flash[:notice] %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% end %>
                     <div style="padding-top:30px" class="panel-body" >
                      <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                       <div class="form-horizontal">
